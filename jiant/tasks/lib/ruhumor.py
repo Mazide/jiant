@@ -73,7 +73,7 @@ class RuHumorTask(Task):
     Batch = Batch
 
     TASK_TYPE = TaskTypes.CLASSIFICATION
-    LABELS = ["0", "1"]
+    LABELS = [0, 1]
     LABEL_TO_ID, ID_TO_LABEL = labels_to_bimap(LABELS)
 
     def get_train_examples(self):
