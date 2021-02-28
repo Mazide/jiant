@@ -1077,7 +1077,22 @@ def download_acceptability_judgments_data_and_write_config(
         path=task_config_path,
     )
 
-def download_rusentiment_data_and_write_config(
+def download_rusentiment_data_and_write_config(task_name: str, task_data_path: str, task_config_path: str):
+    path = "rusentiment_hf"
+    examples_dict = download_utils.convert_hf_local_dataset_to_examples(
+        path=path,
+        name="rusentiment"
+    )
+    paths_dict = download_utils.write_examples_to_jsonls(
+        examples_dict=examples_dict, task_data_path=task_data_path,
+    )
+    jiant_task_name = "rusentiment"
+    py_io.write_json(
+        data={"task": jiant_task_name, "paths": paths_dict, "name": task_name},
+        path=task_config_path,
+    )
+
+def dddd(
     task_name: str, task_data_path: str, task_config_path: str
 ):
     name_map = {

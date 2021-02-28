@@ -1,0 +1,67 @@
+{
+  "builder_name": "csv",
+  "citation": "",
+  "config_name": "default-187d7ad4dca15a38",
+  "dataset_size": 4979808,
+  "description": "",
+  "download_checksums": {
+    "rusentiment_hf_raw/dev.tsv": {
+      "checksum": "e5d4290eb8be6398c73f0b26f7ee4614cd039a1a5f107107e985d8585f653978",
+      "num_bytes": 635600
+    },
+    "rusentiment_hf_raw/test.tsv": {
+      "checksum": "9117790058ac996b4bb33e0c5918a4e6f28bb169969c242082ba7132546c39d1",
+      "num_bytes": 421601
+    },
+    "rusentiment_hf_raw/train.tsv": {
+      "checksum": "77de22dbd72eafb2ce99ea5a28151c0dd6cd0d147177b5f5c93625ad7d4263ba",
+      "num_bytes": 3649503
+    }
+  },
+  "download_size": 4706704,
+  "features": {
+    "label": {
+      "_type": "Value",
+      "dtype": "int64",
+      "id": null
+    },
+    "text": {
+      "_type": "Value",
+      "dtype": "string",
+      "id": null
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "post_processed": null,
+  "post_processing_size": null,
+  "size_in_bytes": 9686512,
+  "splits": {
+    "test": {
+      "dataset_name": "csv",
+      "name": "test",
+      "num_bytes": 447646,
+      "num_examples": 2967
+    },
+    "train": {
+      "dataset_name": "csv",
+      "name": "train",
+      "num_bytes": 3859403,
+      "num_examples": 23985
+    },
+    "validation": {
+      "dataset_name": "csv",
+      "name": "validation",
+      "num_bytes": 672759,
+      "num_examples": 4233
+    }
+  },
+  "supervised_keys": null,
+  "version": {
+    "description": null,
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "version_str": "0.0.0"
+  }
+}

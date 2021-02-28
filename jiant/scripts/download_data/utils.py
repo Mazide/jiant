@@ -6,7 +6,54 @@ import zipfile
 
 import jiant.utils.python.io as py_io
 from jiant.utils.python.datastructures import replace_key
+import os
 
+
+def convert_hf_local_dataset_to_examples(
+    path, name=None, version=None, field_map=None, label_map=None, phase_map=None, phase_list=None
+):
+    """Helper function for reading from datasets.load_dataset and converting to examples
+
+    Args:
+        path: path argument (from datasets.load_dataset)
+        name: name argument (from datasets.load_dataset)
+        version: version argument (from datasets.load_dataset)
+        field_map: dictionary for renaming fields, non-exhaustive
+        label_map: dictionary for replacing labels, non-exhaustive
+        phase_map: dictionary for replacing phase names, non-exhaustive
+        phase_list: phases to keep (after phase_map)
+
+    Returns:
+        Dict[phase] -> list[examples]
+    """
+    print('pppath', os.path.dirname(os.path.abspath(__file__)), path)
+    dataset = datasets.load_from_disk(os.path.dirname(os.path.abspath(__file__))+'/'+path)
+    if phase_map:
+        for old_phase_name, new_phase_name in phase_map.items():
+            replace_key(dataset, old_key=old_phase_name, new_key=new_phase_name)
+    if phase_list is None:
+        phase_list = dataset.keys()
+    examples_dict = {}
+    for phase in phase_list:
+        phase_examples = []
+        for raw_example in dataset[phase]:
+            if field_map:
+                for old_field_name, new_field_name in field_map.items():
+                    replace_key(raw_example, old_key=old_field_name, new_key=new_field_name)
+            if label_map and "label" in raw_example:
+                # Optionally use an dict or function to map labels
+                label = raw_example["label"]
+                if isinstance(label_map, dict):
+                    if raw_example["label"] in label_map:
+                        label = label_map[raw_example["label"]]
+                elif callable(label_map):
+                    label = label_map(raw_example["label"])
+                else:
+                    raise TypeError(label_map)
+                raw_example["label"] = label
+            phase_examples.append(raw_example)
+        examples_dict[phase] = phase_examples
+    return examples_dict
 
 def convert_hf_dataset_to_examples(
     path, name=None, version=None, field_map=None, label_map=None, phase_map=None, phase_list=None
