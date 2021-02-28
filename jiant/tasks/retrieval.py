@@ -52,6 +52,7 @@ from jiant.tasks.lib.race import RaceTask
 from jiant.tasks.lib.record import ReCoRDTask
 from jiant.tasks.lib.rte import RteTask
 from jiant.tasks.lib.ropes import RopesTask
+from jiant.tasks.lib.rusentiment import RuSentimentTask
 from jiant.tasks.lib.scitail import SciTailTask
 from jiant.tasks.lib.edge_probing.semeval import SemevalTask
 from jiant.tasks.lib.snli import SnliTask
@@ -179,6 +180,7 @@ TASK_DICT = {
     "arct": ArctTask,
     "winogrande": WinograndeTask,
     "piqa": PiqaTask,
+    "rusentiment": RuSentimentTask
 }
 
 

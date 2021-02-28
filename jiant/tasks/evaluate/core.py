@@ -343,6 +343,27 @@ class AccAndF1EvaluationScheme(BaseLogitsEvaluationScheme):
         return Metrics(major=minor["acc_and_f1"], minor=minor)
 
 
+class F1AndWeightedF1EvaluationScheme(BaseLogitsEvaluationScheme):
+    def get_preds_from_accumulator(self, task, accumulator):
+        logits = accumulator.get_accumulated()
+        return np.argmax(logits, axis=1)
+
+    @classmethod
+    def compute_metrics_from_preds_and_labels(cls, preds, labels):
+        # noinspection PyUnresolvedReferences
+        acc = float((preds == labels).mean())
+        labels = np.array(labels)
+        f1 = f1_score(y_true=labels, y_pred=preds, average='macro')
+        w_f1 = f1_score(y_true=labels, y_pred=preds, average='weighted')
+        minor = {
+            "acc": acc,
+            "macro_f1": f1,
+            "weighted_f1": w_f1,
+            "f1_and_weighted_f1": (w_f1 + f1) / 2,
+        }
+        return Metrics(major=minor["f1_and_weighted_f1"], minor=minor)
+
+
 class MCCEvaluationScheme(BaseLogitsEvaluationScheme):
     def get_preds_from_accumulator(self, task, accumulator):
         logits = accumulator.get_accumulated()
@@ -991,6 +1012,8 @@ def get_evaluation_scheme_for_task(task) -> BaseEvaluationScheme:
         ),
     ):
         return SimpleAccuracyEvaluationScheme()
+    elif isinstance(task, tasks.RuSentimentTask):
+        return F1AndWeightedF1EvaluationScheme()
     elif isinstance(task, tasks.MCTACOTask):
         return MCTACOEvaluationScheme()
     elif isinstance(task, tasks.CCGTask):
