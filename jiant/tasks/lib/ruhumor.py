@@ -80,7 +80,7 @@ class RuHumorTask(Task):
         return self._create_examples(lines=read_jsonl(self.train_path), set_type="train")
 
     def get_val_examples(self):
-        return self._create_examples(lines=read_jsonl(self.val_path), set_type="val")
+        return self._create_examples(lines=read_jsonl(self.path_dict['validation']), set_type="val")
 
     def get_test_examples(self):
         return self._create_examples(lines=read_jsonl(self.test_path), set_type="test")

@@ -46,7 +46,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c63e15c-e5e6-446b-96ca-a3b1d1ce6a82" name="Default Changelist" comment="" />
+    <list default="true" id="4c63e15c-e5e6-446b-96ca-a3b1d1ce6a82" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,9 +78,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="541" y="259" width="598" height="490" key="find.popup" timestamp="1614531479479">
+    <state x="541" y="259" width="598" height="490" key="find.popup" timestamp="1614533864776">
       <screen x="0" y="23" width="1680" height="963" />
     </state>
-    <state x="541" y="259" width="598" height="490" key="find.popup/0.23.1680.963@0.23.1680.963" timestamp="1614531479479" />
+    <state x="541" y="259" width="598" height="490" key="find.popup/0.23.1680.963@0.23.1680.963" timestamp="1614533864776" />
   </component>
 </project>
