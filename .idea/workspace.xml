@@ -47,12 +47,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c63e15c-e5e6-446b-96ca-a3b1d1ce6a82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/jiant/tasks/lib/ruhumor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jiant/scripts/download_data/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/jiant/scripts/download_data/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jiant/scripts/download_data/dl_datasets/files_tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/jiant/scripts/download_data/dl_datasets/files_tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jiant/tasks/evaluate/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/jiant/tasks/evaluate/core.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jiant/tasks/retrieval.py" beforeDir="false" afterPath="$PROJECT_DIR$/jiant/tasks/retrieval.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

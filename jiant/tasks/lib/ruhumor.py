@@ -77,25 +77,23 @@ class RuHumorTask(Task):
     LABEL_TO_ID, ID_TO_LABEL = labels_to_bimap(LABELS)
 
     def get_train_examples(self):
-        return self._create_examples(path=self.train_path, set_type="train")
+        return self._create_examples(lines=read_jsonl(self.train_path), set_type="train")
 
     def get_val_examples(self):
-        return self._create_examples(path=self.val_path, set_type="val")
+        return self._create_examples(lines=read_jsonl(self.val_path), set_type="val")
 
     def get_test_examples(self):
-        return self._create_examples(path=self.test_path, set_type="test")
+        return self._create_examples(lines=read_jsonl(self.test_path), set_type="test")
 
     @classmethod
-    def _create_examples(cls, path, set_type):
-        df = pd.read_csv(path, index_col=0, names=["split", "label", "text", "unk_1", "unk_2"])
+    def _create_examples(cls, lines, set_type):
         examples = []
-
-        for i, row in df.iterrows():
+        for (i, line) in enumerate(lines):
             examples.append(
                 Example(
                     guid="%s-%s" % (set_type, i),
-                    text=row.text,
-                    label=row.label if set_type != "test" else cls.LABELS[-1],
+                    text=line["text"],
+                    label=line["label"] if set_type != "test" else cls.LABELS[-1],
                 )
             )
         return examples
