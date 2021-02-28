@@ -46,7 +46,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c63e15c-e5e6-446b-96ca-a3b1d1ce6a82" name="Default Changelist" comment="" />
+    <list default="true" id="4c63e15c-e5e6-446b-96ca-a3b1d1ce6a82" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/jiant/tasks/lib/ruhumor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jiant/scripts/download_data/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/jiant/scripts/download_data/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jiant/scripts/download_data/dl_datasets/files_tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/jiant/scripts/download_data/dl_datasets/files_tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jiant/tasks/evaluate/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/jiant/tasks/evaluate/core.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jiant/tasks/retrieval.py" beforeDir="false" afterPath="$PROJECT_DIR$/jiant/tasks/retrieval.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,8 +64,14 @@
   </component>
   <component name="JupyterTrust" id="c3bc6abb-ad2c-4b32-abb5-678f5e55760f" />
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/jiant/tasks/lib" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/jiant/tasks/lib" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -68,5 +81,11 @@
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="541" y="259" width="598" height="490" key="find.popup" timestamp="1614530138199">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state x="541" y="259" width="598" height="490" key="find.popup/0.23.1680.963@0.23.1680.963" timestamp="1614530138199" />
   </component>
 </project>

@@ -102,6 +102,15 @@ def download_task_data_and_write_config(task_name: str, task_data_path: str, tas
         download_rusentiment_data_and_write_config(
             task_name=task_name, task_data_path=task_data_path, task_config_path=task_config_path
         )
+
+    elif task_name == 'rudepression':
+        download_rudepression_data_and_write_config(
+            task_name=task_name, task_data_path=task_data_path, task_config_path=task_config_path
+        )
+    elif task_name == 'ruhumor':
+        download_ruhumor_data_and_write_config(
+            task_name=task_name, task_data_path=task_data_path, task_config_path=task_config_path
+        )
     elif task_name in [
         "senteval_bigram_shift",
         "senteval_coordination_inversion",
@@ -1077,6 +1086,21 @@ def download_acceptability_judgments_data_and_write_config(
         path=task_config_path,
     )
 
+def download_rudepression_data_and_write_config(task_name: str, task_data_path: str, task_config_path: str):
+    path = "depression_hf"
+    examples_dict = download_utils.convert_hf_local_dataset_to_examples(
+        path=path,
+        name="rudepression"
+    )
+    paths_dict = download_utils.write_examples_to_jsonls(
+        examples_dict=examples_dict, task_data_path=task_data_path,
+    )
+    jiant_task_name = "rudepression"
+    py_io.write_json(
+        data={"task": jiant_task_name, "paths": paths_dict, "name": task_name},
+        path=task_config_path,
+    )
+
 def download_rusentiment_data_and_write_config(task_name: str, task_data_path: str, task_config_path: str):
     path = "rusentiment_hf"
     examples_dict = download_utils.convert_hf_local_dataset_to_examples(
@@ -1092,34 +1116,22 @@ def download_rusentiment_data_and_write_config(task_name: str, task_data_path: s
         path=task_config_path,
     )
 
-def dddd(
-    task_name: str, task_data_path: str, task_config_path: str
-):
-    name_map = {
-        "senteval_bigram_shift": "bigram_shift",
-        "senteval_coordination_inversion": "coordination_inversion",
-        "senteval_obj_number": "obj_number",
-        "senteval_odd_man_out": "odd_man_out",
-        "senteval_past_present": "past_present",
-        "senteval_sentence_length": "sentence_length",
-        "senteval_subj_number": "subj_number",
-        "senteval_top_constituents": "top_constituents",
-        "senteval_tree_depth": "tree_depth",
-        "rusentiment": "word_content",
-    }
-    dataset_name = name_map[task_name]
-    os.makedirs(task_data_path, exist_ok=True)
-    # data contains all train/val/test examples, first column indicates the split
-    data_path = os.path.join(task_data_path, "data.tsv")
-    download_utils.download_file(
-        url="https://raw.githubusercontent.com/facebookresearch/SentEval/master/data/probing/"
-        f"{dataset_name}.txt",
-        file_path=data_path,
+def download_ruhumor_data_and_write_config(task_name: str, task_data_path: str, task_config_path: str):
+    path = "fun_hf"
+    examples_dict = download_utils.convert_hf_local_dataset_to_examples(
+        path=path,
+        name="ruhumor"
     )
+    paths_dict = download_utils.write_examples_to_jsonls(
+        examples_dict=examples_dict, task_data_path=task_data_path,
+    )
+    jiant_task_name = "ruhumor"
     py_io.write_json(
-        data={"task": task_name, "paths": {"data": data_path}, "name": task_name},
+        data={"task": jiant_task_name, "paths": paths_dict, "name": task_name},
         path=task_config_path,
     )
+
+
 
 def download_senteval_data_and_write_config(
     task_name: str, task_data_path: str, task_config_path: str

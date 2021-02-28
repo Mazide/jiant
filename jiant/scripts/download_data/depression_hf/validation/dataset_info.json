@@ -1,0 +1,67 @@
+{
+  "builder_name": "csv",
+  "citation": "",
+  "config_name": "default-49aaf85f3ff02666",
+  "dataset_size": 124042343,
+  "description": "",
+  "download_checksums": {
+    "depression_hf_raw/dev.tsv": {
+      "checksum": "67307a8ae7e20ffc522c213cf413f3ef64ae360c270b5d7d5f3d9f58c660e06c",
+      "num_bytes": 24463112
+    },
+    "depression_hf_raw/test.tsv": {
+      "checksum": "00d5f082440ad79b2879301a0012098c7b86a4c6ba5f35073f42590017fe46d6",
+      "num_bytes": 24862289
+    },
+    "depression_hf_raw/train.tsv": {
+      "checksum": "5f487b6183ba6f6d86564f22238258c32c1f64010d9f61a534eb331be2cd09d1",
+      "num_bytes": 74229062
+    }
+  },
+  "download_size": 123554463,
+  "features": {
+    "label": {
+      "_type": "Value",
+      "dtype": "int64",
+      "id": null
+    },
+    "text": {
+      "_type": "Value",
+      "dtype": "string",
+      "id": null
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "post_processed": null,
+  "post_processing_size": null,
+  "size_in_bytes": 247596806,
+  "splits": {
+    "test": {
+      "dataset_name": "csv",
+      "name": "test",
+      "num_bytes": 24959804,
+      "num_examples": 12808
+    },
+    "train": {
+      "dataset_name": "csv",
+      "name": "train",
+      "num_bytes": 74520871,
+      "num_examples": 38423
+    },
+    "validation": {
+      "dataset_name": "csv",
+      "name": "validation",
+      "num_bytes": 24561668,
+      "num_examples": 12808
+    }
+  },
+  "supervised_keys": null,
+  "version": {
+    "description": null,
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "version_str": "0.0.0"
+  }
+}

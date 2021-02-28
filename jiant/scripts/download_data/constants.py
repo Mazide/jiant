@@ -38,7 +38,9 @@ OTHER_DOWNLOAD_TASKS = {
     "senteval_top_constituents",
     "senteval_tree_depth",
     "senteval_word_content",
-    "rusentiment"
+    "rusentiment",
+    "ruhumor",
+    "rudepression"
 }
 
 DIRECT_DOWNLOAD_TASKS = set(

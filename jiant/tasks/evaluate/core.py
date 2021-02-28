@@ -1014,6 +1014,10 @@ def get_evaluation_scheme_for_task(task) -> BaseEvaluationScheme:
         return SimpleAccuracyEvaluationScheme()
     elif isinstance(task, tasks.RuSentimentTask):
         return F1AndWeightedF1EvaluationScheme()
+    elif isinstance(task, tasks.RuDepressionTask):
+        return AccAndF1EvaluationScheme()
+    elif isinstance(task, tasks.RuHumorTask):
+        return AccAndF1EvaluationScheme()
     elif isinstance(task, tasks.MCTACOTask):
         return MCTACOEvaluationScheme()
     elif isinstance(task, tasks.CCGTask):
