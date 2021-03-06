@@ -252,6 +252,7 @@ class SimpleAPIMultiTaskConfigurator(zconf.RunConfig):
     eval_batch_size = zconf.attr(type=int, default=None)
     gradient_accumulation_steps = zconf.attr(type=int, default=1)
     eval_subset_num = zconf.attr(type=int, default=500)
+    loss_weight = zconf.attr(type=dict, default=defaultdict(lambda: 1))
     epochs = zconf.attr(type=int, default=None)
     max_steps = zconf.attr(type=int, default=None)
     num_gpus = zconf.attr(type=int, default=None)
@@ -417,6 +418,7 @@ class SimpleAPIMultiTaskConfigurator(zconf.RunConfig):
                     "eval_batch_size": eval_batch_size,
                     "gradient_accumulation_steps": self.gradient_accumulation_steps,
                     "eval_subset_num": self.eval_subset_num,
+                    "loss_weight": self.loss_weight[task_name]
                 }
                 for task_name in full_task_name_list
             },
