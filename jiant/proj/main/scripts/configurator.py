@@ -6,7 +6,7 @@ import torch
 import jiant.utils.zconf as zconf
 import jiant.utils.python.io as py_io
 import jiant.utils.python.datastructures as py_datastructures
-
+from collections import defaultdict
 
 class Registry:
     configurator_dict = {}
@@ -89,6 +89,7 @@ class SingleTaskConfigurator(zconf.RunConfig):
     eval_batch_multiplier = zconf.attr(type=int, default=None)
     eval_batch_size = zconf.attr(type=int, default=None)
     gradient_accumulation_steps = zconf.attr(type=int, default=1)
+    loss_weight = zconf.attr(type=dict, default=defaultdict(lambda: 1))
     eval_subset_num = zconf.attr(type=int, default=500)
     epochs = zconf.attr(type=int, default=None)
     max_steps = zconf.attr(type=int, default=None)
@@ -177,6 +178,7 @@ class SingleTaskConfigurator(zconf.RunConfig):
                     "eval_batch_size": eval_batch_size,
                     "gradient_accumulation_steps": self.gradient_accumulation_steps,
                     "eval_subset_num": self.eval_subset_num,
+                    "loss_weight": self.loss_weight[self.task_name]
                 }
             },
             "taskmodels_config": {

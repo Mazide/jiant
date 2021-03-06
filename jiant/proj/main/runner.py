@@ -98,6 +98,7 @@ class JiantRunner:
         task_specific_config = self.jiant_task_container.task_specific_configs[task_name]
 
         loss_val = 0
+        weighted_loss_val = 0
         for i in range(task_specific_config.gradient_accumulation_steps):
             batch, batch_metadata = train_dataloader_dict[task_name].pop()
             batch = batch.to(self.device)
@@ -105,10 +106,12 @@ class JiantRunner:
                 jiant_model=self.jiant_model, batch=batch, task=task, compute_loss=True,
             )
             loss = self.complex_backpropagate(
-                loss=model_output.loss,
+                loss=model_output.loss*task_specific_config.loss_weight,
                 gradient_accumulation_steps=task_specific_config.gradient_accumulation_steps,
             )
-            loss_val += loss.item()
+            v = loss.item()
+            loss_val += v
+            weighted_loss_val += v*task_specific_config.loss_weight
 
         self.optimizer_scheduler.step()
         self.optimizer_scheduler.optimizer.zero_grad()
@@ -121,6 +124,7 @@ class JiantRunner:
                 "task_step": train_state.task_steps[task_name],
                 "global_step": train_state.global_steps,
                 "loss_val": loss_val / task_specific_config.gradient_accumulation_steps,
+                "weighted_loss_val": weighted_loss_val / task_specific_config.gradient_accumulation_steps,
             },
         )
 
