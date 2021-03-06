@@ -53,6 +53,7 @@ from jiant.tasks.lib.record import ReCoRDTask
 from jiant.tasks.lib.rte import RteTask
 from jiant.tasks.lib.ropes import RopesTask
 from jiant.tasks.lib.rudepression import RuDepressionTask
+from jiant.tasks.lib.ruhate import RuHateTask
 from jiant.tasks.lib.ruhumor import RuHumorTask
 from jiant.tasks.lib.rusentiment import RuSentimentTask
 from jiant.tasks.lib.scitail import SciTailTask
@@ -183,6 +184,7 @@ TASK_DICT = {
     "winogrande": WinograndeTask,
     "piqa": PiqaTask,
     "rusentiment": RuSentimentTask,
+    "ruhate": RuHateTask,
     "ruhumor": RuHumorTask,
     "rudepression": RuDepressionTask
 }

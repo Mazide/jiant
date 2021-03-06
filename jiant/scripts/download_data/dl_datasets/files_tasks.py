@@ -102,7 +102,10 @@ def download_task_data_and_write_config(task_name: str, task_data_path: str, tas
         download_rusentiment_data_and_write_config(
             task_name=task_name, task_data_path=task_data_path, task_config_path=task_config_path
         )
-
+    elif task_name == 'ruhate':
+        download_ruhate_data_and_write_config(
+            task_name=task_name, task_data_path=task_data_path, task_config_path=task_config_path
+        )
     elif task_name == 'rudepression':
         download_rudepression_data_and_write_config(
             task_name=task_name, task_data_path=task_data_path, task_config_path=task_config_path
@@ -1101,6 +1104,7 @@ def download_rudepression_data_and_write_config(task_name: str, task_data_path: 
         path=task_config_path,
     )
 
+
 def download_rusentiment_data_and_write_config(task_name: str, task_data_path: str, task_config_path: str):
     path = "rusentiment_hf"
     examples_dict = download_utils.convert_hf_local_dataset_to_examples(
@@ -1111,6 +1115,22 @@ def download_rusentiment_data_and_write_config(task_name: str, task_data_path: s
         examples_dict=examples_dict, task_data_path=task_data_path,
     )
     jiant_task_name = "rusentiment"
+    py_io.write_json(
+        data={"task": jiant_task_name, "paths": paths_dict, "name": task_name},
+        path=task_config_path,
+    )
+
+
+def download_ruhate_data_and_write_config(task_name: str, task_data_path: str, task_config_path: str):
+    path = "hate_hf"
+    examples_dict = download_utils.convert_hf_local_dataset_to_examples(
+        path=path,
+        name="ruhate"
+    )
+    paths_dict = download_utils.write_examples_to_jsonls(
+        examples_dict=examples_dict, task_data_path=task_data_path,
+    )
+    jiant_task_name = "ruhate"
     py_io.write_json(
         data={"task": jiant_task_name, "paths": paths_dict, "name": task_name},
         path=task_config_path,
